@@ -1,0 +1,2 @@
+envs/rev/prod/.terraform/
+envs/rev/prod/.terraform.lock.hcl

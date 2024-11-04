@@ -4,13 +4,19 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'envs/rev/dev/**' # Triggers workflow when files in dev folder change on main branch
-      - 'envs/rev/prod/**' # Triggers workflow when files in prod folder change on main branch
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Deployment environment (dev or prod)"
+        required: true
+        type: choice
+        options:
+          - dev
+          - prod
 
 env:
   TF_VERSION: '1.5.0'
-  AWS_REGION: 'us-west-2' # Update this with your preferred AWS region
+  AWS_REGION: 'us-west-2' # Update this with your preferred region
 
 jobs:
   terraform:
@@ -30,31 +36,29 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          echo "AWS credentials configured."
+          echo "AWS credentials are set."
 
       - name: Determine Terraform Directory
         id: tf_directory
         run: |
-          if git diff --name-only HEAD~1 | grep -q '^envs/rev/dev/'; then
+          if [ "${{ github.event.inputs.environment }}" == "dev" ]; then
             echo "TF_DIR=envs/rev/dev" >> $GITHUB_ENV
-          elif git diff --name-only HEAD~1 | grep -q '^envs/rev/prod/'; then
+          elif [ "${{ github.event.inputs.environment }}" == "prod" ]; then
             echo "TF_DIR=envs/rev/prod" >> $GITHUB_ENV
           else
-            echo "No changes detected in dev or prod directories."
+            echo "Invalid environment specified"
             exit 1
           fi
 
       - name: Terraform Init
-        if: env.TF_DIR # Only runs if TF_DIR is set by the previous step
         working-directory: ${{ env.TF_DIR }}
         run: terraform init
 
       - name: Terraform Plan
-        if: env.TF_DIR
         working-directory: ${{ env.TF_DIR }}
         run: terraform plan -var-file=terraform.tfvars
 
       - name: Terraform Apply
-        if: env.TF_DIR
+        if: github.event_name == 'workflow_dispatch'
         working-directory: ${{ env.TF_DIR }}
         run: terraform apply -var-file=terraform.tfvars -auto-approve
