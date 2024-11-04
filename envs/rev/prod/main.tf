@@ -6,9 +6,9 @@ module "vpc" {
   sub_count           = var.sub_count
   network_tags        = var.network_tags
   priv_sub_azs        = var.priv_sub_azs
-  env                 = var.env
   priv_sub_cidr_block = var.priv_sub_cidr_block
   global_route        = var.global_route
+  env                 = var.env
   
 }
 module "ec2" {
