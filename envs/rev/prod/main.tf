@@ -7,8 +7,8 @@ module "vpc" {
   network_tags        = var.network_tags
   priv_sub_azs        = var.priv_sub_azs
   priv_sub_cidr_block = var.priv_sub_cidr_block
-  env                 = var.env
   global_route        = var.global_route
+   env                 = var.env
  
   
 }

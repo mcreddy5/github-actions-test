@@ -42,6 +42,7 @@ jobs:
           else
             echo "No changes detected in dev or prod directories."
             exit 1
+          fi
 
       - name: Terraform Init
         if: env.TF_DIR # Only runs if TF_DIR is set by the previous step
