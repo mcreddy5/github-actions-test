@@ -56,6 +56,8 @@ jobs:
 
       - name: Terraform Plan
         working-directory: ${{ env.TF_DIR }}
+        env:
+          TF_LOG: DEBUG
         run: terraform plan -var-file=terraform.tfvars
 
       - name: Terraform Apply
