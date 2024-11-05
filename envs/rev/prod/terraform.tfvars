@@ -6,8 +6,9 @@ pub_sub_azs         = ["us-west-2a","us-west-2b", "us-west-2c"]
 pub_sub_cidr_block  = ["10.100.0.0/20","10.100.16.0/20","10.100.32.0/20"]
 priv_sub_azs        = ["us-west-2a","us-west-2b", "us-west-2c"]
 priv_sub_cidr_block = ["10.100.48.0/20","10.100.64.0/20","10.100.80.0/20"]
-global_route        = "0.0.0.0/0"
 env                 = "prod-test-rev"
+global_route        = "0.0.0.0/0"
+
 
 sub_count = {
   "public"  = "3"
