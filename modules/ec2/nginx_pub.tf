@@ -1,5 +1,5 @@
 
-/*resource "aws_instance" "public-nginx-server" {
+resource "aws_instance" "public-nginx-server" {
     ami = data.aws_ami.amazon-linux.id
     instance_type = var.instance_type["public-nginx"]
     key_name = var.key_name
@@ -14,4 +14,4 @@
     tags = merge( { "Name" = "${var.instance_tags["public-nginx"]}" }, local.ec2_common_tags, {"Environment" = "${var.env}"})
     subnet_id = var.pub_sub_id[0]
     vpc_security_group_ids = [ aws_security_group.public_nginx_sg.id, aws_security_group.common_sg.id ]
-}*/
+}
