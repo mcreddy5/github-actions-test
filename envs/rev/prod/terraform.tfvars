@@ -194,14 +194,14 @@ instance_tags = {
   "ftp"             = "t3a.medium"
   "bastion"         = "t3a.medium"
   "mongo_ops"       = "t3a.medium"
-  "kube"            = "t3a.medium"
-  "public-nginx"    = "t3a.medium"
+  "kube"            = "t3.small"
+  "public-nginx"    = "t2.micro"
   "pritunl"         = "t2.micro"
   "postgresql"      = "t3a.medium"
   "mancenter"       = "t3a.medium"
   "mongo-standalone" = "t3a.medium"
   "mongo-server"    = "t3a.medium"
-  "rvgpt"           = "t3a.medium"
+  "rvgpt"           = "t2.micro"
   }
 
 
