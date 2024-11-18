@@ -12,7 +12,7 @@ module "vpc" {
  
   
 }
-module "ec2" {
+/*module "ec2" {
   source                 = "../../../modules/ec2"
   vpc_id                 = module.vpc.vpc_id
   env                    = var.env
@@ -46,7 +46,7 @@ module "ec2" {
   depends_on = [
     module.vpc
   ]
-}
+}*/
 
 module "eks" {
   source                                = "../../../modules/eks"
