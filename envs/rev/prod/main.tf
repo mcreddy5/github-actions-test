@@ -48,12 +48,12 @@ module "ec2" {
   ]
 }
 
-/*module "eks" {
+module "eks" {
   source                                = "../../../modules/eks"
   environment_name                      = var.environment_name
   cluster_name                          = var.cluster_name
   cluster_version                       = var.cluster_version
-region                               = var.region
+ #region                               = var.region
   vpc_id                                = module.vpc.vpc_id
   subnet_ids_for_eks_cluster            = module.vpc.pub_sub_names
   subnet_ids_for_eks_cluster_node_group = module.vpc.priv_sub_names
@@ -82,4 +82,4 @@ region                               = var.region
  depends_on = [
     module.vpc
   ]
-}*/
+}

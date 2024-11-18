@@ -246,7 +246,7 @@ key_name = "rev-terraform-githubactions-test"
 
 
 ############################ EKS TFVARS #################################
-/*(environment_name                      = "preprod"
+environment_name                      = "preprod"
 cluster_name                          = "preprod-eks-rev-cluster-new"
 cluster_version                       = "1.25"
 eks_cluster_role_name                 = "preprod-eks-rev-cluster-new"
@@ -280,4 +280,4 @@ sg_info = {
 }
 sg_rules_eks_additional = {
   htpps_access = { from = 443, to = 443, proto = "tcp", cidr = "10.70.49.110/32", desc = "Allow access to kube" },
-}*/
+}

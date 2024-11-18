@@ -151,7 +151,7 @@ locals {
 /*variable "region" {
   type = string
 }*/
-/*variable "environment_name" {
+variable "environment_name" {
   type = string
 }
 variable "cluster_name" {
@@ -217,13 +217,13 @@ variable "eks_min_size" {
 }
 variable "eks_max_size" {
   type = list(number)
-}*/
+}
 /*variable "eks_cluster_node_group_taint_value" {
     type = list(string)
 }*/
 
 # security group info
-/*variable "sg_name" {
+variable "sg_name" {
   type = map(string)
 }
 variable "sg_info" {
@@ -231,7 +231,7 @@ variable "sg_info" {
 }
 variable "sg_rules_eks_additional" {
   type = map(any)
-}*/
+}
 #variable "cluster_sg_id" {
 #
 #}

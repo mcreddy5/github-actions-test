@@ -1,4 +1,4 @@
-/*variable "environment_name" {
+variable "environment_name" {
   type = string
 }
 variable "cluster_name" {
@@ -69,7 +69,7 @@ variable "eks_max_size" {
 }*/
 
 # security group info
-/*variable "sg_name" {
+variable "sg_name" {
     type = map(string)
 }
 variable "sg_info" {
@@ -77,7 +77,7 @@ variable "sg_info" {
 }
 variable "sg_rules_eks_additional" {
     type = map
-}*/
+}
 /*
 variable "cluster_sg_id" {
 
