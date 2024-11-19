@@ -1,11 +1,11 @@
 # for provider
 aws_region = "us-west-2"
 ############################ VPC TFVARS #################################
-vpc_cidr_block      = "10.100.0.0/16"
+vpc_cidr_block      = "10.50.0.0/16"
 pub_sub_azs         = ["us-west-2a","us-west-2b", "us-west-2c"]
-pub_sub_cidr_block  = ["10.100.0.0/20","10.100.16.0/20","10.100.32.0/20"]
+pub_sub_cidr_block  = ["10.50.0.0/20","10.50.16.0/20","10.50.32.0/20"]
 priv_sub_azs        = ["us-west-2a","us-west-2b", "us-west-2c"]
-priv_sub_cidr_block = ["10.100.48.0/20","10.100.64.0/20","10.100.80.0/20"]
+priv_sub_cidr_block = ["10.50.48.0/20","10.50.64.0/20","10.50.80.0/20"]
 global_route        = "0.0.0.0/0"
 env                 = "prod-test-rev"
 
@@ -102,18 +102,18 @@ sg_rules_bastion = {
 }
 
 sg_rules_kube = {
-   revlitix_ssh       = { from = 22, to = 22, proto = "tcp", cidr = "10.100.0.0/16", desc = "Allow ssh from " }
+   revlitix_ssh       = { from = 22, to = 22, proto = "tcp", cidr = "10.50.0.0/16", desc = "Allow ssh from " }
 }
 sg_rules_hazelcast = {
  hc_access         = { from = 5701, to = 5701, proto = "tcp", cidr = "10.50.0.0/16", desc = "Allow hazelcast access internally" }
 }
 sg_rules_mancenter = {
-  hc_mcenter_access = { from = 8080, to = 8080, proto = "tcp", cidr = "10.100.0.0/16", desc = "Allow hazelcast_mancenter access internally" }
-  hc_access         = { from = 5701, to = 5701, proto = "tcp", cidr = "10.100.0.0/16", desc = "Allow hazelcast access internally" }
+  hc_mcenter_access = { from = 8080, to = 8080, proto = "tcp", cidr = "10.50.0.0/16", desc = "Allow hazelcast_mancenter access internally" }
+  hc_access         = { from = 5701, to = 5701, proto = "tcp", cidr = "10.50.0.0/16", desc = "Allow hazelcast access internally" }
 }
 sg_rules_public_nginx = {
-  http_all_access  = { from = 80, to = 80, proto = "tcp", cidr = "10.100.0.0/16", desc = "Allow http to public" }
-  https_all_access = { from = 443, to = 443, proto = "tcp", cidr = "10.100.0.0/16", desc = "Allow https to public" }
+  http_all_access  = { from = 80, to = 80, proto = "tcp", cidr = "10.50.0.0/16", desc = "Allow http to public" }
+  https_all_access = { from = 443, to = 443, proto = "tcp", cidr = "10.50.0.0/16", desc = "Allow https to public" }
 }
 
 sg_rules_grafana = {
@@ -133,8 +133,8 @@ sg_rules_ftp = {
 }
 
 sg_rules_postgresql = {
-  traffic_port_internal_access       = { from = 3306, to = 3306, proto = "tcp", cidr = "10.100.0.0/16", desc = "Allow traffic from VPC" }
-  postgres_access       = { from = 5432, to = 5432, proto = "tcp", cidr = "10.100.0.0/16", desc = "Allow traffic from VPC" }
+  traffic_port_internal_access       = { from = 3306, to = 3306, proto = "tcp", cidr = "10.50.0.0/16", desc = "Allow traffic from VPC" }
+  postgres_access       = { from = 5432, to = 5432, proto = "tcp", cidr = "10.50.0.0/16", desc = "Allow traffic from VPC" }
 }
 
 sg_rules_rvgpt ={
@@ -143,10 +143,10 @@ sg_rules_rvgpt ={
 }
 
 sg_rules_rmq = {
-  traffic_port_internal_access       = { from = 5672, to = 5672, proto = "tcp", cidr = "10.100.0.0/16", desc = "Allow traffic from VPC" }
-  RMQ_UI_Port = { from = 15672, to = 15672, proto = "tcp", cidr = "10.100.0.0/16", desc = "Allow traffic from VPC" }
-  RMQ_access = { from = 25672, to = 25672, proto = "tcp", cidr = "10.100.0.0/16", desc = "Allow traffic from VPC" }
-  RMQ = { from = 15692, to = 15692, proto = "tcp", cidr = "10.100.0.0/16", desc = "Allow traffic from VPC" }
+  traffic_port_internal_access       = { from = 5672, to = 5672, proto = "tcp", cidr = "10.50.0.0/16", desc = "Allow traffic from VPC" }
+  RMQ_UI_Port = { from = 15672, to = 15672, proto = "tcp", cidr = "10.50.0.0/16", desc = "Allow traffic from VPC" }
+  RMQ_access = { from = 25672, to = 25672, proto = "tcp", cidr = "10.50.0.0/16", desc = "Allow traffic from VPC" }
+  RMQ = { from = 15692, to = 15692, proto = "tcp", cidr = "10.50.0.0/16", desc = "Allow traffic from VPC" }
 }
 # sg_rules_eks_additional_ec2 = {
 #    htpps_access       = { from = 443, to = 443, proto = "tcp", cidr = "10.50.0.0/16", desc = "Allow access to kube" }
